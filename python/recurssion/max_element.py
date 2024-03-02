@@ -1,14 +1,15 @@
 from random import randint
+from typing import List
 
-arr = [*map(lambda x: randint(x,100),range(10))]
-
-def maximum(arr):
-    def solve(arr, indx, max):
+def maximum(arr: List[int]) -> bool:
+    def solve(arr: List[int], indx: int, max: int):
         if indx==-1:
             return max
         return solve(arr, indx - 1, arr[indx] if arr[indx] > max else max)
     return solve(arr, len(arr)-1, -1)
 
-print(
-    f"Maxmium element in arr {arr} is {maximum(arr)}"
-)
+if __name__ == '__main__':
+    arr: List[int] = [*map(lambda _: randint(0,100),range(10))]
+    print(
+        f"Maxmium element in arr {arr} is {maximum(arr)}"
+    )
